@@ -1,1 +1,1 @@
-##competitions-assistant
+## competitions-assistant
