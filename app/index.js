@@ -10,21 +10,11 @@ import Main from '../app/blocks/main/main.js';
 
 const store = createStore(reducer, composeWithDevTools());
 
-const component = () => {
-    render(
-        <Provider store={store}>
-            <Router>
-                <Route path="/" component={Main} />
-            </Router>
-        </Provider>,
-        document.getElementById('app'),
-    );
-};
-
-component();
-
-if (module.hot) {
-    module.hot.accept(() => {
-        component();
-    });
-}
+render(
+    <Provider store={store}>
+        <Router>
+            <Route path="/" component={Main} />
+        </Router>
+    </Provider>,
+    document.getElementById('app'),
+);
