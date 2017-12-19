@@ -1,8 +1,14 @@
 const express = require('express');
+const bodyParser= require('body-parser');
+const MongoClient = require('mongodb').MongoClient;
 const app = express();
 
-app.listen(3000, () => {
-    console.log('listening on 3000');
+app.use(bodyParser.urlencoded({extended: true}));
+
+MongoClient.connect('link-to-mongodb', (err, database) => {
+    app.listen(7777, () => {
+        console.log('listening on 7777');
+    });
 });
 
 app.use(express.static('dist'));
