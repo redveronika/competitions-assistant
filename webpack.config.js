@@ -1,15 +1,20 @@
+const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './app/index.js',
+        app: ['react-hot-loader/patch', './app/index.js', 'webpack-hot-middleware/client', 'webpack/hot/dev-server'],
+    },
+    devtool: 'inline-source-map',
+    resolve: {
+        extensions: ['.js', 'map']
     },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     module: {
         loaders: [{
@@ -23,6 +28,7 @@ module.exports = {
         new HtmlPlugin({
             filename: 'index.html',
             template: 'app/index.html'
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

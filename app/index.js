@@ -1,20 +1,31 @@
-import React from 'react'
+import React from 'react';
+import { AppContainer } from 'react-hot-loader';
 import {render} from 'react-dom'
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import reducer from './reducers';
+import configureStore from './configureStore';
 
 import Main from '../app/blocks/main/main.js';
 
-const store = createStore(reducer, composeWithDevTools());
+const store = configureStore();
 
-render(
-    <Provider store={store}>
-        <Router>
-            <Route path="/" component={Main} />
-        </Router>
-    </Provider>,
-    document.getElementById('app'),
-);
+const component = () => {
+    render(
+        <AppContainer>
+            <Provider store={store}>
+                <Router>
+                    <Route path="/" component={Main} />
+                </Router>
+            </Provider>
+        </AppContainer>,
+        document.getElementById('app'),
+    );
+};
+
+component();
+
+if (module.hot) {
+    module.hot.accept(() => {
+        component();
+    });
+}

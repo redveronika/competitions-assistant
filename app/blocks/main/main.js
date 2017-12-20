@@ -6,7 +6,7 @@ const Main = () => {
     return (
         <Button raised color="primary">
             <StarIcon />
-            Competitions assistant
+            Competitions assistant!!!
         </Button>
     )
 };
