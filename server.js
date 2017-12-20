@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser= require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
@@ -5,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-MongoClient.connect('link-to-mongodb', (err, database) => {
+MongoClient.connect(process.env.MONGO_DB_URI_COMPETITIONS_ASSISTANT, (err, database) => {
     app.listen(7777, () => {
         console.log('listening on 7777');
     });
