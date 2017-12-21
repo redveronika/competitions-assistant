@@ -1,12 +1,12 @@
 import React from 'react';
 import { AppContainer } from 'react-hot-loader';
-import { render } from 'react-dom'
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { createStore } from 'redux';
 
-import Main from './blocks/main/main.js';
+import Main from './blocks/main/main';
 import reducer from './reducers/index';
 
 
@@ -38,6 +38,7 @@ init(store, Main);
 // Hot Module replacement: обновляем модули и Redux store на лету
 if (module.hot) {
     module.hot.accept(['./blocks/main/main.js', './reducers'], () => {
+        /* eslint-disable global-require */
         const nextRootReducer = require('./reducers/index').default;
         store.replaceReducer(nextRootReducer);
         init(store, Main);
