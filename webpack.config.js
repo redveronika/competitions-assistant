@@ -9,7 +9,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     resolve: {
-        extensions: ['.js', 'map']
+        extensions: ['.js', 'map'],
     },
     output: {
         filename: '[name].bundle.js',
@@ -17,18 +17,18 @@ module.exports = {
         publicPath: '/',
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
-        }]
+            use: ['babel-loader', 'eslint-loader'],
+        }],
     },
     plugins: [
         new CleanWebpackPlugin(['dist'], { allowExternal: true }),
         new HtmlPlugin({
             filename: 'index.html',
-            template: 'app/index.html'
+            template: 'app/index.html',
         }),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+        new webpack.HotModuleReplacementPlugin(),
+    ],
 };
