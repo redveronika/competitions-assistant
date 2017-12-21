@@ -19,7 +19,7 @@ const config = {
         new CleanWebpackPlugin(['../dist'], { allowExternal: true }),
         new HtmlPlugin({
             filename: 'index.html',
-            template: 'app/index.html',
+            template: 'client/index.html',
         }),
     ],
 };

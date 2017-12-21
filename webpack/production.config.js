@@ -4,6 +4,6 @@ const { config } = require('./shared.config');
 
 module.exports = merge(config, {
     entry: {
-        app: './app/index.js',
+        app: './client/index.js',
     },
 });
