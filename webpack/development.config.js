@@ -5,7 +5,7 @@ const config = require('./shared.config').config;
 
 module.exports = merge(config, {
     entry: {
-        app: ['react-hot-loader/patch', './app/index.js', 'webpack-hot-middleware/client', 'webpack/hot/dev-server'],
+        app: ['react-hot-loader/patch', './client/index.js', 'webpack-hot-middleware/client', 'webpack/hot/dev-server'],
     },
     devtool: 'inline-source-map',
     resolve: {
