@@ -5,7 +5,7 @@ import StarIcon from 'material-ui-icons/Star';
 const Main = () => (
     <Button raised color="primary">
         <StarIcon />
-        Competitions assistant
+        Competitions assistant!!
     </Button>
 );
 

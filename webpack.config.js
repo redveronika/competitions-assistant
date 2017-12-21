@@ -1,34 +1,11 @@
-const webpack = require('webpack');
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
+'use strict';
 
-module.exports = {
-    entry: {
-        app: ['react-hot-loader/patch', './app/index.js', 'webpack-hot-middleware/client', 'webpack/hot/dev-server'],
-    },
-    devtool: 'inline-source-map',
-    resolve: {
-        extensions: ['.js', 'map'],
-    },
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
-    },
-    module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: ['babel-loader', 'eslint-loader'],
-        }],
-    },
-    plugins: [
-        new CleanWebpackPlugin(['dist'], { allowExternal: true }),
-        new HtmlPlugin({
-            filename: 'index.html',
-            template: 'app/index.html',
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-    ],
+const path = require('path');
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+
+module.exports = function () {
+    return require(
+        path.join(__dirname, 'webpack/', `${process.env.NODE_ENV}.config.js`)
+    );
 };

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackConfig = require('./webpack.config.js');
+const webpackConfig = require('./webpack/development.config.js');
 const webpackCompiler = webpack(webpackConfig);
 
 function useWebpackMiddleware(app) {
@@ -10,16 +10,16 @@ function useWebpackMiddleware(app) {
         stats: {
             colors: true,
             chunks: false,
-            'errors-only': true
-        }
+            'errors-only': true,
+        },
     }));
     app.use(webpackHotMiddleware(webpackCompiler, {
-        log: console.log
+        log: console.log,
     }));
 
     return app;
 }
 
 module.exports = {
-    useWebpackMiddleware: useWebpackMiddleware
+    useWebpackMiddleware: useWebpackMiddleware,
 };

@@ -37,7 +37,7 @@ init(store, Main);
 
 // Hot Module replacement: обновляем модули и Redux store на лету
 if (module.hot) {
-    module.hot.accept(['./blocks/main/main.js', './reducers'], () => {
+    module.hot.accept(['./blocks/main/main', './reducers'], () => {
         /* eslint-disable global-require */
         const nextRootReducer = require('./reducers/index').default;
         store.replaceReducer(nextRootReducer);
