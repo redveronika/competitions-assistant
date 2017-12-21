@@ -1,10 +1,13 @@
 import React from 'react'
+import Button from 'material-ui/Button';
+import StarIcon from 'material-ui-icons/Star';
 
 const Main = () => {
     return (
-        <div>
+        <Button raised color="primary">
+            <StarIcon />
             Competitions assistant
-        </div>
+        </Button>
     )
 };
 export default Main;
