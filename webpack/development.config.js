@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const config = require('./shared.config').config;
+const { config } = require('./shared.config');
 
 module.exports = merge(config, {
     entry: {
