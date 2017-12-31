@@ -5,14 +5,16 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { createStore } from 'redux';
+import MuiThemeProvider from 'material-ui/es/styles/MuiThemeProvider';
 
-import Main from './blocks/main/main';
+import Main from './blocks/Main/Main';
 import reducer from './reducers/index';
+import './styles.css';
+import theme from './theme';
 
 
 // Создаём Redux store и подключаем расширение для браузера только в dev режиме
 const store = createStore(reducer, composeWithDevTools());
-
 /**
  * @function
  * @name init — функция для инициализации приложения.
@@ -22,11 +24,13 @@ const store = createStore(reducer, composeWithDevTools());
 const init = (newStore = store, Component) => {
     render(
         <AppContainer>
-            <Provider store={newStore}>
-                <Router>
-                    <Route path="/" component={Component} />
-                </Router>
-            </Provider>
+            <MuiThemeProvider theme={theme}>
+                <Provider store={newStore}>
+                    <Router>
+                        <Route path="/" component={Component} />
+                    </Router>
+                </Provider>
+            </MuiThemeProvider>
         </AppContainer>,
         document.getElementById('app'),
     );
@@ -37,7 +41,7 @@ init(store, Main);
 
 // Hot Module replacement: обновляем модули и Redux store на лету
 if (module.hot) {
-    module.hot.accept(['./blocks/main/main', './reducers'], () => {
+    module.hot.accept(['./blocks/Main/Main', './reducers'], () => {
         /* eslint-disable global-require */
         const nextRootReducer = require('./reducers/index').default;
         store.replaceReducer(nextRootReducer);
