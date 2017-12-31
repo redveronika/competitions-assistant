@@ -9,11 +9,26 @@ const config = {
         publicPath: '/',
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: ['babel-loader', 'eslint-loader'],
-        }],
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader', 'eslint-loader'],
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    'css-loader',
+                ],
+            },
+        ],
     },
     plugins: [
         new HtmlPlugin({
