@@ -10,7 +10,7 @@ const styles = {
     },
 };
 
-const MainHeader = props => (
+const Header = props => (
     <AppBar>
         <Toolbar className={props.classes.toolbar}>
             <Typography type="title">
@@ -23,9 +23,9 @@ const MainHeader = props => (
     </AppBar>
 );
 
-MainHeader.propTypes = {
+Header.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(MainHeader);
+export default withStyles(styles)(Header);

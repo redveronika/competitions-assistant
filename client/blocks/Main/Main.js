@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 
-import MainHeader from './Header/Main-Header';
-import MainGrid from './Grid/Main-Grid';
+import { Header, EventsGrid } from './../../blocks';
 
 const events = [
     {
@@ -71,13 +70,13 @@ class Main extends React.Component {
         const { classes } = this.props;
         return (
             <Grid className={classes.grid}>
-                <MainHeader />
+                <Header />
                 <div className={classes.container}>
                     <Typography type="title" className={classes.title}>
                         Все предстоящие соревнования
                     </Typography>
                     <div className={classes.gridContainer}>
-                        <MainGrid events={events} />
+                        <EventsGrid events={events} />
                     </div>
                 </div>
             </Grid>
