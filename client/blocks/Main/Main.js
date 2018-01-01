@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles';
 
 import MainHeader from './Header/Main-Header';
 import MainGrid from './Grid/Main-Grid';
+import { AuthModal } from '../../blocks';
 
 const events = [
     {
@@ -67,11 +68,33 @@ class Main extends React.Component {
         },
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalOpen: false,
+        };
+
+        this.openModal = this.openModal.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+    }
+
+    openModal() {
+        this.setState({
+            modalOpen: true,
+        });
+    }
+
+    handleModalClose() {
+        this.setState({
+            modalOpen: false,
+        });
+    }
+
     render() {
         const { classes } = this.props;
         return (
-            <Grid className={classes.grid}>
-                <MainHeader />
+            <Grid container className={classes.grid}>
+                <MainHeader onClickUser={this.openModal} />
                 <div className={classes.container}>
                     <Typography type="title" className={classes.title}>
                         Все предстоящие соревнования
@@ -80,6 +103,10 @@ class Main extends React.Component {
                         <MainGrid events={events} />
                     </div>
                 </div>
+                <AuthModal
+                    openModal={this.state.modalOpen}
+                    handleModalClose={this.handleModalClose}
+                />
             </Grid>
         );
     }
