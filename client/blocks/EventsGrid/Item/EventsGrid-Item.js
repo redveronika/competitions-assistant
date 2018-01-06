@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'material-ui/es/styles/withStyles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 
@@ -12,8 +12,9 @@ const styles = {
         flexShrink: 0,
     },
     media: {
+        width: '100%',
         height: 280,
-        backgroundSize: 'contain!important',
+        objectFit: 'contain',
     },
 };
 
@@ -21,10 +22,10 @@ const EventsGridItem = (props) => {
     const { classes, event } = props;
     return (
         <Card className={classes.card}>
-            <CardMedia
+            <img
                 className={classes.media}
-                image={event.img}
-                title="Contemplative Reptile"
+                src={event.img}
+                alt={`Афиша ${event.title}`}
             />
             <CardContent>
                 <Typography type="headline" component="h2">
