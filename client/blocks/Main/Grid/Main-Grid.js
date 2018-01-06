@@ -6,7 +6,7 @@ import withStyles from 'material-ui/es/styles/withStyles';
 const styles = {
     gridItem: {
         height: '100%',
-        'box-sizing': 'border-box',
+        boxSizing: 'border-box',
         border: '1px solid #80808029',
     },
 };
