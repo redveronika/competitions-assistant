@@ -51,7 +51,7 @@ class Main extends React.Component {
         grid: {
             position: 'relative',
             width: '100%',
-            'max-width': '1260px',
+            maxWidth: '1260px',
             height: '100%',
             margin: '0 auto',
         },
