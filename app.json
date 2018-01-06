@@ -1,0 +1,29 @@
+{
+  "name": "competitions-assistant",
+  "scripts": {
+  },
+  "env": {
+    "MONGO_DB_URI": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "PORT": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
