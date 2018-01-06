@@ -10,22 +10,18 @@ const styles = {
     },
 };
 
-const MainHeader = (props) => {
-    const onClickUser = () => (props.onClickUser());
-
-    return (
-        <AppBar>
-            <Toolbar className={props.classes.toolbar}>
-                <Typography type="title">
-                    Competitions assistant
-                </Typography>
-                <IconButton onClick={onClickUser}>
-                    <AccountIcon />
-                </IconButton>
-            </Toolbar>
-        </AppBar>
-    );
-};
+const MainHeader = props => (
+    <AppBar>
+        <Toolbar className={props.classes.toolbar}>
+            <Typography type="title">
+                Competitions assistant
+            </Typography>
+            <IconButton onClick={props.onClickUser}>
+                <AccountIcon />
+            </IconButton>
+        </Toolbar>
+    </AppBar>
+);
 
 MainHeader.propTypes = {
     classes: PropTypes.object.isRequired,
