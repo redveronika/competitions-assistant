@@ -16,7 +16,7 @@ const Header = props => (
             <Typography type="title">
                 Competitions assistant
             </Typography>
-            <IconButton>
+            <IconButton onClick={props.onClickUser}>
                 <AccountIcon />
             </IconButton>
         </Toolbar>
@@ -25,6 +25,7 @@ const Header = props => (
 
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
+    onClickUser: PropTypes.func.isRequired,
 };
 
 

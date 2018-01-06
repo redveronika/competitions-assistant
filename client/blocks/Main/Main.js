@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Typography } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 
-import { Header, EventsGrid } from './../../blocks';
+import { AuthModal, Header, EventsGrid } from '../../blocks';
 
 const events = [
     {
@@ -49,7 +49,7 @@ class Main extends React.Component {
         grid: {
             position: 'relative',
             width: '100%',
-            'max-width': '1260px',
+            maxWidth: '1260px',
             height: '100%',
             margin: '0 auto',
         },
@@ -66,11 +66,33 @@ class Main extends React.Component {
         },
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalOpen: false,
+        };
+
+        this.openModal = this.openModal.bind(this);
+        this.handleModalClose = this.handleModalClose.bind(this);
+    }
+
+    openModal() {
+        this.setState({
+            modalOpen: true,
+        });
+    }
+
+    handleModalClose() {
+        this.setState({
+            modalOpen: false,
+        });
+    }
+
     render() {
         const { classes } = this.props;
         return (
             <Grid className={classes.grid}>
-                <Header />
+                <Header onClickUser={this.openModal} />
                 <div className={classes.container}>
                     <Typography type="title" className={classes.title}>
                         Все предстоящие соревнования
@@ -79,6 +101,10 @@ class Main extends React.Component {
                         <EventsGrid events={events} />
                     </div>
                 </div>
+                <AuthModal
+                    openModal={this.state.modalOpen}
+                    handleModalClose={this.handleModalClose}
+                />
             </Grid>
         );
     }
